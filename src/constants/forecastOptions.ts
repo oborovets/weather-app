@@ -1,10 +1,15 @@
+export enum Forecast {
+  current = "current.json",
+  forecast = "forecast.json",
+}
+
 export default [
   {
-    value: "current.json",
+    value: Forecast.current,
     label: "Current Weather",
   },
   {
-    value: "forecast.json",
+    value: Forecast.forecast,
     label: "Forecast Weather",
   },
 ];

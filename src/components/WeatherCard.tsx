@@ -4,42 +4,30 @@ import Typography from "./Typography.tsx";
 import formatString from "../utils/formatString.ts";
 
 interface Props {
-  place: string;
-  timezone: string;
-  localtime: string;
-  condition: string;
-  temperature: string;
+  condition?: string;
+  temperature?: string;
+  averageTemp?: string;
+  chanceToRain?: string;
+  date?: string;
 }
 
 export default function Card({
-  place,
-  timezone,
-  localtime,
+  date,
   condition,
   temperature,
+  averageTemp,
+  chanceToRain,
 }: Props) {
   return (
-    <MUICard sx={{ maxWidth: 300, mt: 1, ml: 1 }}>
+    <MUICard sx={{ minWidth: 250, maxWidth: 350, mr: 1 }}>
       <CardContent>
+        <Typography>{formatString("Date:", date || "Today")}</Typography>
+        <Typography>{formatString("Condition:", condition)}</Typography>
         <Typography>
-          {formatString("Location:")}
-          {place}
+          {formatString("Temperature:", temperature || averageTemp, "°C")}
         </Typography>
         <Typography>
-          {formatString("Timezone:")}
-          {timezone}
-        </Typography>
-        <Typography>
-          {formatString("Localtime:")}
-          {localtime}
-        </Typography>
-        <Typography>
-          {formatString("Condition:")}
-          {condition}
-        </Typography>
-        <Typography>
-          {formatString("Temperature")}
-          {temperature}°C
+          {formatString("Chance to rain:", chanceToRain, "%")}
         </Typography>
       </CardContent>
     </MUICard>

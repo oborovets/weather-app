@@ -15,23 +15,20 @@ interface Option {
 interface Props {
   options: Option[];
   label: string;
-  value: "" | HTMLSelectElement | undefined;
-  handleChange: (e: SelectChangeEvent<HTMLSelectElement>) => void;
+  value: string | number;
+  handleChange: (event: SelectChangeEvent<string | number>) => void;
 }
 
 export default function Select({ label, options, value, handleChange }: Props) {
   return (
-    <Box sx={{ maxWidth: 210, minWidth: 210 }}>
+    <Box sx={{ maxWidth: 210, minWidth: 210, m: 1 }}>
       <FormControl fullWidth>
-        <InputLabel>{label}</InputLabel>
-        <MUISelect
-          label={label}
-          value={value}
-          onChange={handleChange}
-          sx={{ m: 1 }}
-        >
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <MUISelect label={label} value={value} onChange={handleChange}>
           {options.map((opt) => (
-            <MenuItem value={opt.value}>{opt.label}</MenuItem>
+            <MenuItem key={opt.value} value={opt.value}>
+              {opt.label}
+            </MenuItem>
           ))}
         </MUISelect>
       </FormControl>

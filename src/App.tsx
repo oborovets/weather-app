@@ -1,9 +1,14 @@
-import './App.css'
+import AppBar from "./components/AppBar.tsx";
+import "./App.css";
+import Home from "./containers/Home.tsx";
 
 function App() {
-    return (
-        <h1>Wellcome to weather app</h1>
-    )
+  return (
+    <>
+      <AppBar />
+      <Home />
+    </>
+  );
 }
 
-export default App
+export default App;
